@@ -1,3 +1,6 @@
+import subprocess
+import sys
+
 from setuptools import setup
 import os
 
@@ -5,6 +8,8 @@ if not os.environ['PYTHONPATH']:
     os.environ['PYTHONPATH'] = "H:\\Coding\\Python Projects\\sftp_pi\\"
 elif "H:\\Coding\\Python Projects\\sftp_pi\\" not in os.environ['PYTHONPATH']:
     os.environ['PYTHONPATH'] += "H:\\Coding\\Python Projects\\sftp_pi\\"
+
+subprocess.check_call([sys.executable, '-m', 'pip', 'install','-r', 'requirements.txt'])
 
 setup(
     name='sftp_pi',
