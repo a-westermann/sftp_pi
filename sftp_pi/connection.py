@@ -19,14 +19,21 @@ class Connection (dict):
         self['host key'] = paramiko.RSAKey(data=decodebytes(self['host key']))
         self['cnopts'] = pysftp.CnOpts(knownhosts=None)
         self['cnopts'].hostkeys.add(self['host'], 'ssh-rsa', self['host key'])
+        self.connection = self.connect()
 
     def connect(self) -> pysftp.Connection:
-        return pysftp.Connection(self['host'], username=self['user'], private_key='../private_key.ppk',
-                               port=self['port'], cnopts=self['cnopts'])
+        return pysftp.Connection(self['host'], username=self['user'],
+                            private_key='../private_key.ppk', port=self['port'], cnopts=self['cnopts'])
 
     def test_connection(self):
         conn = self.connect()
         print(conn.execute('ls'))
+
+    def upload(self, local_file_path, remote_path):
+        self.connection.put(local_file_path, remote_path)
+
+    def download(self, remote_path, local_path):
+        self.connection.get(remote_path, local_path)
 
 
 # c = Connection('../config.json', '../hostkey.ppk', '../private_key.ppk')
