@@ -4,10 +4,10 @@ import sys
 from setuptools import setup
 import os
 
-if not os.environ['PYTHONPATH']:
-    os.environ['PYTHONPATH'] = "H:\\Coding\\Python Projects\\sftp_pi\\"
-elif "H:\\Coding\\Python Projects\\sftp_pi\\" not in os.environ['PYTHONPATH']:
-    os.environ['PYTHONPATH'] += "H:\\Coding\\Python Projects\\sftp_pi\\"
+if not os.environ['PYTHONPATH'] or 'PYTHONPATH' not in os.environ:
+    os.environ['PYTHONPATH'] = "C:\\Users\\Andrew\\Code Projects\\sftp_pi\\sftp_pi\\"
+elif "C:\\Users\\Andrew\\Code Projects\\sftp_pi\\sftp_pi\\" not in os.environ['PYTHONPATH']:
+    os.environ['PYTHONPATH'] += "C:\\Users\\Andrew\\Code Projects\\sftp_pi\\sftp_pi\\"
 
 subprocess.check_call([sys.executable, '-m', 'pip', 'install','-r', 'requirements.txt'])
 
