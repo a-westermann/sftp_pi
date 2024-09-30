@@ -1,5 +1,5 @@
 BUGS:
- Pip install is not working. It is not added to path, and the requirements are not installed
+ Issue getting the built package to install in new venv. PYTHONPATH env var is not set
 
 
 This package can be used in all projects that connect to my raspberry pi server.
